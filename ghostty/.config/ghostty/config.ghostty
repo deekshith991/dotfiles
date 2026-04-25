@@ -1,0 +1,50 @@
+
+# theme
+theme = Catppuccin Mocha
+
+# Font set to Nerd
+font-family = "Jetbrains Mono"
+font-size = 12
+
+# Start Ghostty maximized
+maximize = true
+
+
+# -----------------------------
+# padding
+# -----------------------------
+window-padding-x = 0
+window-padding-y = 0
+
+# -----------------------------
+# splitting
+# -----------------------------
+
+# Vertical split (like tmux)
+keybind = ctrl+shift+|=new_split:right
+
+# Horizontal split
+keybind = ctrl+shift+-=new_split:down
+
+# keybind = ctrl+h=goto_split:left
+# keybind = ctrl+j=goto_split:down
+# keybind = ctrl+k=goto_split:up
+# keybind = ctrl+l=goto_split:right
+
+
+# -----------------------------
+# Keybind Example
+# -----------------------------
+
+# New window
+keybind = ctrl+shift+n=new_window
+
+# New tab
+keybind = ctrl+shift+t=new_tab
+
+# Close tab
+keybind = ctrl+shift+w=close_surface
+
+# Copy / paste
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
