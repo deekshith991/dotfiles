@@ -20,6 +20,7 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
+(setq package-install-upgrade-built-in t)
 
 ;;; =========================
 ;;; UI BASICS
@@ -71,6 +72,8 @@
 ;;; =========================
 ;;; MODELINE
 ;;; =========================
+
+(use-package nerd-icons)
 
 (use-package doom-modeline
   :init
@@ -142,7 +145,7 @@
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
 	 ("C-x b" . counsel-ibuffer)
-	 ("C-x C-f" . cousel-find-file)
+	 ("C-x C-f" . counsel-find-file)
 	 :map minibuffer-local-map
 	 ("C-r" . counsel-minibuffer-history)))
 
@@ -162,6 +165,15 @@
   ([remap describe-key] . helpful-key))
 
 
+
+
+;;; =========================
+;;; ORG-ROAM
+;;; =========================
+
+(use-package compat
+  :ensure t)
+
 (use-package org-roam
   :ensure t
   :init
@@ -172,7 +184,7 @@
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert)
-         :map org-node-map
+         :map org-mode-map
          ("C-M-i" . completion-at-point)
          :map org-roam-dailies-map
          ("Y" . org-roam-dailies-capture-yesterday)
@@ -182,12 +194,104 @@
   :config
   (require 'org-roam-dailies) ;; Ensure the keymap is available
   (org-roam-db-autosync-mode))
+
+;; -------------------------------
+;; Org base setup
+;; -------------------------------
+
+(use-package org
+  :ensure t
+  :config
+
+  ;; Org files
+  (setq org-directory "~/org/")
+  (setq org-agenda-files
+        '("~/org/tasks.org"
+          "~/org/projects.org"
+          "~/org/habits.org"
+          "~/org/inbox.org"))
+
+  ;; Logging
+  (setq org-log-done 'time)
+  (setq org-log-into-drawer t)
+
+  ;; TODO workflow
+  (setq org-todo-keywords
+        '((sequence
+           "TODO(t)"
+           "NEXT(n)"
+           "WAIT(w@)"
+           "|"
+           "DONE(d)"
+           "CANCELLED(c@)")))
+
+  ;; Priorities
+  (setq org-highest-priority ?A)
+  (setq org-default-priority ?C)
+  (setq org-lowest-priority ?E)
+
+  ;; Tags
+  (setq org-tag-alist
+        '(("@work" . ?w)
+          ("@home" . ?h)
+          ("@errand" . ?e)
+          ("urgent" . ?u)
+          ("idea" . ?i)))
+
+  ;; Agenda appearance
+  (setq org-agenda-span 'day)
+  (setq org-agenda-start-on-weekday nil)
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-agenda-window-setup 'current-window)
+
+  ;; Sorting
+  (setq org-agenda-sorting-strategy
+        '((agenda habit-down time-up priority-down category-keep)
+          (todo priority-down category-keep)
+          (tags priority-down category-keep)
+          (search category-keep)))
+
+  ;; Habits
+  (require 'org-habit)
+  (add-to-list 'org-modules 'org-habit)
+
+  ;; Habit display
+  (setq org-habit-graph-column 60)
+
+  ;; Custom agenda commands
+  (setq org-agenda-custom-commands
+        '(("d" "Dashboard"
+           ((agenda "" ((org-deadline-warning-days 7)))
+            (todo "NEXT")
+            (tags-todo "urgent")
+            (todo "WAIT")))
+
+          ("w" "Work Tasks"
+           tags-todo "@work")
+
+          ("h" "Home Tasks"
+           tags-todo "@home")
+
+          ("n" "Next Tasks"
+           todo "NEXT"))))
+
+;; -------------------------------
+;; Useful keybindings
+;; -------------------------------
+
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
+
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
+ '(package-selected-packages
+   '(catppuccin-theme counsel doom-modeline helpful ivy-rich org-roam
+		      org-roam-ui rainbow-delimiters transient)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
