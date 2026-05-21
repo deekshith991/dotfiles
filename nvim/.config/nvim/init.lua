@@ -71,7 +71,7 @@ vim.opt.laststatus = 3
 --   lua/options.lua
 --
 require("options")
-
+require("keymaps")
 
 
 -- =========================================================
