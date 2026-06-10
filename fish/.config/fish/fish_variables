@@ -1,13 +1,17 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export DONE_FILE:/home/deekshith/notes/done\x2etxt
 SETUVAR --export LANG:en_US\x2eUTF\x2d8
 SETUVAR --export LC_ALL:en_US\x2eUTF\x2d8
 SETUVAR --export SSH_AGENT_PID:34361
 SETUVAR --export SSH_AUTH_SOCK:/home/deekshith/\x2essh/agent/s\x2eYxozMG9Sbh\x2eagent\x2evKKX3D6RZr
+SETUVAR --export TODO_DIR:/home/deekshith/notes
+SETUVAR --export TODO_FILE:/home/deekshith/notes/todo\x2etxt
 SETUVAR __done_min_cmd_duration:10000
 SETUVAR __done_notification_urgency_level:low
 SETUVAR __fish_initialized:4300
-SETUVAR fish_user_paths:/home/deekshith/dotfiles/doomEmacs/\x2eemacs\x2ed/bin\x1e/home/deekshith/dotfiles/scripts
+SETUVAR _fisher_upgraded_to_4_4:\x1d
+SETUVAR fish_user_paths:/home/deekshith/\x2ecargo/bin\x1e/home/deekshith/dotfiles/doomEmacs/\x2eemacs\x2ed/bin\x1e/home/deekshith/dotfiles/scripts
 SETUVAR pure_begin_prompt_with_current_directory:true
 SETUVAR pure_check_for_new_release:false
 SETUVAR pure_color_at_sign:pure_color_mute
