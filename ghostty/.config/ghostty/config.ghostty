@@ -10,7 +10,7 @@ font-family = "Jetbrains Mono"
 font-size = 12
 
 # Start Ghostty maximized
-maximize = true
+# maximize = true
 
 
 # -----------------------------
@@ -29,10 +29,10 @@ keybind = ctrl+shift+|=new_split:right
 # Horizontal split
 keybind = ctrl+shift+-=new_split:down
 
-# keybind = ctrl+h=goto_split:left
-# keybind = ctrl+j=goto_split:down
-# keybind = ctrl+k=goto_split:up
-# keybind = ctrl+l=goto_split:right
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:down
+keybind = ctrl+k=goto_split:up
+keybind = ctrl+l=goto_split:right
 
 
 # -----------------------------
