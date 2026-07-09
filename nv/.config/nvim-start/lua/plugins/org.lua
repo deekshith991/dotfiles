@@ -1,0 +1,10 @@
+-- vim.pack.add({
+-- 	{ src = "https://github.com/deekshith991/org.nvim" },
+-- })
+--
+-- vim.schedule(function()
+-- 	require("org").setup({
+-- 		todo_file = "~/notes/todo.md",
+-- 		ideas_directory = "~/notes/ideas/",
+-- 	})
+-- end)
